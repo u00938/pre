@@ -1,0 +1,3 @@
+###
+GET http://localhost:5000/api/job-opening/list
+Authorization: Bearer test
