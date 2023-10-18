@@ -1,3 +1,50 @@
 ###
 GET http://localhost:5000/api/job-opening/list
+Content-Type: application/json
+Authorization: Bearer test
+
+###
+POST http://localhost:5000/api/job-opening
+Content-Type: application/json
+Authorization: Bearer test
+
+{
+  "companyId": "CP2310170001",
+  "position": "백엔드 주니어 개발자3",
+  "reward": 1000000,
+  "detail": "원티드랩에서 백엔드 시니어 개발자를 채용합니다. 자격요건은..",
+  "skill": "Django"
+}
+
+###
+PUT http://localhost:5000/api/job-opening
+Content-Type: application/json
+Authorization: Bearer test
+
+{
+  "jobOpeningId": "JO2310180001",
+  "companyId": "CP2310170001",
+  "position": "백엔드 주니어 개발자",
+  "reward": 90000,
+  "detail": "원티드랩에서 백엔드 주니어 개발자를 채용합니다. 자격요건은..",
+  "skill": "Python"
+}
+
+###
+DELETE  http://localhost:5000/api/job-opening
+Content-Type: application/json
+Authorization: Bearer test
+
+{
+  "jobOpeningId": "1"
+}
+
+###
+GET  http://localhost:5000/api/job-opening/detail?id=JO2310180005
+Content-Type: application/json
+Authorization: Bearer test
+
+###
+GET  http://localhost:5000/api/job-opening?search=원티드
+Content-Type: application/json
 Authorization: Bearer test

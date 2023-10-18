@@ -21,14 +21,11 @@ export class JobOpening {
   @Column("varchar", { name: "position", nullable: true, length: 50 })
   position: string | null;
 
-  @Column("decimal", {
+  @Column("int", {
     name: "reward",
-    nullable: true,
-    precision: 10,
-    scale: 0,
-    default: () => "'0'",
+    default: () => '0',
   })
-  reward: string | null;
+  reward: number;
 
   @Column("longtext", { name: "detail", nullable: true })
   detail: string | null;
