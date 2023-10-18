@@ -6,6 +6,7 @@ import { JobOpening } from '@/model/entities/JobOpening';
 import { IJobOpeningDetail, IJobOpeningList } from '@/interface/IJobOpening';
 import { escape, unescape } from 'html-escaper';
 import { getBoolean } from '@/util/cast';
+import { JobApplyHistory } from '@/model/entities/JobApplyHistory';
 
 
 @Service()
@@ -103,6 +104,12 @@ export default class JobOpeningService {
 
   public static async DeleteJobOpening(bodyData): Promise<boolean> {
     try {
+      // fk 테이블 삭제 (job_apply_history)
+      await getConnection('wanted_pre_dev')
+      .getRepository(JobApplyHistory)
+      .delete({ jobOpeningId: bodyData.jobOpeningId });
+
+      // 공고 삭제
       const row = await getConnection('wanted_pre_dev')
       .getRepository(JobOpening)
       .delete({ id: bodyData.jobOpeningId });
@@ -137,6 +144,12 @@ export default class JobOpeningService {
       .innerJoin(Company, 'company', 'company.id = jobOpening.company_id')
       .where('jobOpening.id = :id', { id: queryData.id })
       .getRawOne();
+
+      if (!detailData) {
+        const error = new Error(`not exist`);
+        error.name = 'dev';
+        throw error;
+      }
 
       detailData.detail = unescape(detailData.detail);
       detailData.otherIdsList = detailData.otherIdsList.split(',');
