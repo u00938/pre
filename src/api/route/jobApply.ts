@@ -10,6 +10,7 @@ const route = Router();
 export default (app: Router) => {
   app.use('/job-apply', route);
 
+  // 사용자 채용공고 지원
   route.post('/',
     celebrate({
       body: Joi.object({
