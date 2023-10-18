@@ -4,13 +4,7 @@
   "description": "earnion-api server",
   "main": "src/app.js",
   "scripts": {
-    "build": "tsc",
-    "start": "NODE_ENV=dev nodemon",
-    "test": "NODE_ENV=test mocha -r ts-node/register -r tsconfig-paths/register src/test/**/*.ts",
-    "lint": "eslint --ignore-path .gitignore --ext .ts src/",
-    "lintfix": "eslint --ignore-path .gitignore --ext .ts src/ --fix",
-    "dev": "NODE_ENV=dev pm2 start ts-node -- -r tsconfig-paths/register --transpile-only ./src/app.ts",
-    "prod": "NODE_ENV=prod pm2 start ts-node -i 0 -- -r tsconfig-paths/register --transpile-only ./src/app.ts"
+    "start": "NODE_ENV=dev nodemon"
   },
   "private": true,
   "author": "indexmine (lightsky340@gmail.com)",
