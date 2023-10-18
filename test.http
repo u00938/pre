@@ -48,3 +48,12 @@ Authorization: Bearer test
 GET  http://localhost:5000/api/job-opening?search=원티드
 Content-Type: application/json
 Authorization: Bearer test
+
+###
+POST  http://localhost:5000/api/job-apply
+Content-Type: application/json
+Authorization: Bearer test
+
+{
+  "jobOpeningId": "JO2310180001"
+}
